@@ -44,13 +44,5 @@ function Lookup(json, index, defaultIndex) {
         break
     }
 
-    return function lookup(key) {
-        var value = t[key]
-
-        if (!value) {
-            throw new Error(format(KEY_NOT_FOUND, key, index))
-        }
-
-        return value
-    }
+    return t
 }

@@ -31,8 +31,8 @@ var example = {
 
 test("Lookup yields correct value for a given index", function (assert) {
     var lookup = Lookup(example, "es_ES")
-    var greeting = lookup("greeting")
-    var thanks = lookup("thanks")
+    var greeting = lookup.greeting
+    var thanks = lookup.thanks
 
     assert.equal(greeting, "¿Hola {0}, que tal?")
     assert.equal(thanks, "Gracias")
@@ -42,8 +42,8 @@ test("Lookup yields correct value for a given index", function (assert) {
 test("Lookup yields default value for a missing index",
     function (assert) {
         var lookup = Lookup(example, "en_GB")
-        var greeting = lookup("greeting")
-        var thanks = lookup("thanks")
+        var greeting = lookup.greeting
+        var thanks = lookup.thanks
 
         assert.equal(greeting, "Hello {0}, how are you?")
         assert.equal(thanks, "Thank you")
@@ -53,9 +53,9 @@ test("Lookup yields default value for a missing index",
 test("Lookup yields default value for a missing key",
     function (assert) {
         var lookup = Lookup(example, "es_AR")
-        var fallbackAR = lookup("fallback")
+        var fallbackAR = lookup.fallback
         lookup = Lookup(example, "es_ES")
-        var fallbackES = lookup("fallback")
+        var fallbackES = lookup.fallback
 
         assert.equal(fallbackAR, "No other locale has this string")
         assert.equal(fallbackES, "No other locale has this string")
@@ -64,7 +64,7 @@ test("Lookup yields default value for a missing key",
 
 test("Lookup keys redirect as required", function (assert) {
     var lookup = Lookup(example, "es_AR")
-    var greeting = lookup("greeting")
+    var greeting = lookup.greeting
 
     assert.equal(greeting, "¿Hola {0}, que tal?")
     assert.end()
@@ -74,7 +74,7 @@ test("Missing key throws exception", function (assert) {
     var lookup = Lookup(example)
     var result
     try {
-        result = lookup("blob")
+        result = lookup.blob
         assert.error()
     } catch (e) {
         assert.equal(e.message, "Key 'blob' not found in 'default'")
@@ -106,7 +106,7 @@ test("Deep circular index throws exception", function (assert) {
 
 test("Custom default is used", function (assert) {
     var lookup = Lookup(example, null, "magical")
-    var result = lookup("greeting")
+    var result = lookup.greeting
     assert.equal(result, "Hello alternative")
     assert.end()
 })
