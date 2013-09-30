@@ -1,0 +1,54 @@
+{
+  "name": "json-lookup",
+  "version": "0.1.0",
+  "description": "A version fallback for key lookup on a single json object",
+  "keywords": [],
+  "author": "Matt-Esch <matt@mattesch.info>",
+  "repository": "git://github.com/Matt-Esch/json-lookup.git",
+  "main": "index",
+  "homepage": "https://github.com/Matt-Esch/json-lookup",
+  "contributors": [
+    {
+      "name": "Matt-Esch"
+    }
+  ],
+  "bugs": {
+    "url": "https://github.com/Matt-Esch/json-lookup/issues",
+    "email": "matt@mattesch.info"
+  },
+  "dependencies": {
+    "string-template": "~0.1.1",
+    "xtend": "~2.1.1"
+  },
+  "devDependencies": {
+    "tape": "~1.0.2"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://github.com/Matt-Esch/json-lookup/raw/master/LICENSE"
+    }
+  ],
+  "scripts": {
+    "test": "node ./test/index.js",
+    "travis-test": "istanbul cover ./test/index.js && ((cat coverage/lcov.info | coveralls) || exit 0)",
+    "cover": "istanbul cover --report none --print detail ./test/index.js",
+    "view-cover": "istanbul report html && google-chrome ./coverage/index.html"
+  },
+  "testling": {
+    "files": "test/index.js",
+    "browsers": [
+      "ie/8..latest",
+      "firefox/16..latest",
+      "firefox/nightly",
+      "chrome/22..latest",
+      "chrome/canary",
+      "opera/12..latest",
+      "opera/next",
+      "safari/5.1..latest",
+      "ipad/6.0..latest",
+      "iphone/6.0..latest",
+      "android-browser/4.2..latest"
+    ]
+  }
+}
