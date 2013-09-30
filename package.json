@@ -17,7 +17,6 @@
     "email": "matt@mattesch.info"
   },
   "dependencies": {
-    "string-template": "~0.1.1",
     "xtend": "~2.1.1"
   },
   "devDependencies": {
